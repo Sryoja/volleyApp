@@ -1,0 +1,44 @@
+
+.header{
+    /*border: 1px solid cornflowerblue;*/
+    padding: 1rem 1rem 0 1rem;
+    position: relative;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.headerLogo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+}
+.menuList {
+    /*border: 1px solid aqua;*/
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+}
+.menuItem {
+}
+.menuLink {
+    font-size: 0.9rem;
+    border: 1px solid #021013;
+    display: inline-block;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+.menuLinkActive {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: #00c4ff;
+    pointer-events: none ;
+}
+.menuLink:hover {
+    border-bottom: 1px solid #00c4ff;
+}

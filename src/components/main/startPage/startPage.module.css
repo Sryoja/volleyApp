@@ -1,0 +1,18 @@
+
+.startSection{
+    grid-column: 2;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.startTitle{
+    align-self: center;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 4rem;
+}

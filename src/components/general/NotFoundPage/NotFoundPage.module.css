@@ -1,0 +1,20 @@
+.wrapper{
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.wrapper h1 {
+    font-size: 2rem;
+}
+.wrapper a {
+    border: 1px solid #77899a;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+.wrapper a:hover{
+    color: #00c4ff;
+    border: 1px solid #00c4ff;
+}

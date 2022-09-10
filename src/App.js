@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from "react"
+import {Routes, Route, Link} from "react-router-dom";
 import './App.css';
+import Header from "./components/header/Header";
+import RegistrationPage from "./components/main/registrationPage/RegistrationPage";
+import StartPage from "./components/main/startPage/StartPage";
+import TossingPage from "./components/main/tossingPage/TossingPage";
+import {NotFoundPage} from "./components/general/NotFoundPage/NotFoundPage";
+import {ConfirmPage} from "./components/general/ConfirmPage/ConfirmPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header/>
+            <Routes>
+                <Route path="/" element={<StartPage/>}/>
+                <Route path="/registration" element={<RegistrationPage/>}/>
+                <Route path="/tossing" element={<TossingPage/>}/>
+                <Route path="/confirm" element={<ConfirmPage/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
