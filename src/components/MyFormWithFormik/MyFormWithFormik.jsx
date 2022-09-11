@@ -3,22 +3,17 @@ import styles from "./myFormikStyles.module.css"
 import {Formik, Form} from "formik"
 import * as Yup from "yup"
 import FormikField from "./FormikField";
-import {useDispatch, useSelector} from "react-redux";
-import {addTeam, teamsCountIncrement} from "../../store/slicers/teamsList";
-import {setTeamToFirebase} from "../../api/firebase";
-import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
-const MyFormWithFormik = () => {
+const MyFormWithFormik = ({getNewTeam}) => {
 
     const teamsCount = useSelector(state => state.teamsListSlice.teamsCount)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
 
     const initialValues = {
-        name1: "",
-        name2: "",
-        phone: "",
+        name1: "test1",
+        name2: "test2",
+        phone: "0000000000",
     }
     const validationSchema = Yup.object({
         name1: Yup.string().required("Имя первого участника обязательно").min(5, "лишком маленькое имя"),
@@ -28,18 +23,15 @@ const MyFormWithFormik = () => {
     })
 
     const onSubmit = (values, onSubmitProps) => {
-        const payload = {
+        const newTeam = {
             id: teamsCount,
             player1: values.name1,
             player2: values.name2,
             phone: values.phone
         }
-        setTeamToFirebase(teamsCount, payload).then(() => {
-            dispatch(addTeam(payload))
-            onSubmitProps.resetForm()
-            onSubmitProps.setSubmitting(false)
-            navigate("/confirm")
-        })
+        getNewTeam(newTeam)
+        onSubmitProps.resetForm()
+        onSubmitProps.setSubmitting(false)
     }
 
     return (
