@@ -7,6 +7,7 @@ import StartPage from "./components/main/startPage/StartPage";
 import TossingPage from "./components/main/tossingPage/TossingPage";
 import {NotFoundPage} from "./components/general/NotFoundPage/NotFoundPage";
 import {ConfirmPage} from "./components/general/ConfirmPage/ConfirmPage";
+import Random from "./components/main/random/Random";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/registration" element={<RegistrationPage/>}/>
                 <Route path="/tossing" element={<TossingPage/>}/>
+                <Route path="/random" element={<Random/>}/>
                 <Route path="/confirm" element={<ConfirmPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>

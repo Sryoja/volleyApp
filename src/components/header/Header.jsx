@@ -12,8 +12,7 @@ const Header = () => {
                 <li className={s.menuItem}><NavLink to="/" className={setActive}>Главная</NavLink></li>
                 <li className={s.menuItem}><NavLink to="registration" className={setActive}>Регистрация</NavLink></li>
                 <li className={s.menuItem}><NavLink to="tossing" className={setActive}>Жеребьевка</NavLink></li>
-                <li className={s.menuItem}><a href="#" className={s.menuLink}>link 2</a></li>
-                <li className={s.menuItem}><a href="#" className={s.menuLink}>link 3</a></li>
+                <li className={s.menuItem}><NavLink to="random" className={setActive}>random</NavLink></li>
             </ul>
         </header>
     );

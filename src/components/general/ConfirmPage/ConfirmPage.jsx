@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 export const ConfirmPage = () => {
     return (
         <div className={s.wrapper}>
-            <h1>Ваша команда успешно зарегистрирована.</h1>
+            <h1>Ваша команда успешно зарегистрирована и ожидает подтверждения от организаторов.</h1>
             <Link to="/">вернуться на главную</Link>
         </div>
     );
