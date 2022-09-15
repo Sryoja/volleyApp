@@ -27,7 +27,8 @@ const MyFormWithFormik = ({getNewTeam}) => {
             id: teamsCount,
             player1: values.name1,
             player2: values.name2,
-            phone: values.phone
+            phone: values.phone,
+            confirmed: false
         }
         getNewTeam(newTeam)
         onSubmitProps.resetForm()

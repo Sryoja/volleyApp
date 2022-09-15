@@ -7,6 +7,13 @@
 .listItem:not(:last-child) {
     border-bottom: 1px solid #77899a;
 }
+.listItem.confirmed .itemSpan {
+    color: #32a4c5;
+}
+.listItem.denied .itemSpan {
+    color: dimgrey;
+    text-decoration: line-through;
+}
 .itemSpan{
     flex-basis: 50%;
     text-align: center;
@@ -15,4 +22,32 @@
 }
 .itemSpan:nth-child(2) {
     border-right: 1px solid #77899a;
+}
+.itemExtra{
+    flex-basis: 50%;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.itemExtra span{
+    flex-basis: 50%;
+    text-align: center;
+}
+.itemBtn{
+    border: none;
+    background-color: #0d3c48;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    flex-basis: 50%;
+}
+.itemBtn:hover,
+.itemBtn:focus {
+    outline: none;
+    background-color: #0c2d3f;
+    color: #00c4ff;
+}
+.itemBtn:active{
+    transform: scale(0.9);
 }

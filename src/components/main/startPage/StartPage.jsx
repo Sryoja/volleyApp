@@ -8,11 +8,13 @@ import {OneTeamField} from "../../general/OneTeamField";
 const StartPage = () => {
 
     const dispatch = useDispatch()
-    const teamsList = useSelector(state => state.teamsListSlice.teamsList)
+    const teamsList = useSelector(state => state.teamsListSlice.registrationList)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getTeamsListAndSetToStore())
-    },[])
+    }, [])
+
+    const teamsListFiltered = teamsList.filter(team => team.confirmed === true)
 
     return (
         <section className={s.startSection}>
@@ -21,13 +23,14 @@ const StartPage = () => {
                 : <h2 className={s.startTitle}>Список зарегистрированных команд.</h2>
             }
             <ul className={s.list}>
-                {teamsList.map(p => {
+                {teamsListFiltered.map((p, idx) => {
                     return (
                         <OneTeamField
                             key={p.id}
-                            number={p.id + 1}
+                            number={idx + 1}
                             player1={p.player1}
-                            player2={p.player2}/>
+                            player2={p.player2}
+                            confirmed={p.confirmed}/>
                     )
                 })}
             </ul>

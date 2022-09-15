@@ -1,0 +1,17 @@
+.confirmSection{
+    grid-column: 2;
+    padding: 20px;
+}
+.title {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.groupsWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}

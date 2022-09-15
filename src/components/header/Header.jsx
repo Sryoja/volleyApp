@@ -13,6 +13,7 @@ const Header = () => {
                 <li className={s.menuItem}><NavLink to="registration" className={setActive}>Регистрация</NavLink></li>
                 <li className={s.menuItem}><NavLink to="tossing" className={setActive}>Жеребьевка</NavLink></li>
                 <li className={s.menuItem}><NavLink to="random" className={setActive}>random</NavLink></li>
+                <li className={s.menuItem}><NavLink to="admin" className={setActive}>admin</NavLink></li>
             </ul>
         </header>
     );

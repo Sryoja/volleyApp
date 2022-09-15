@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 const RegistrationPage = () => {
+
     const teamsCount = useSelector(state => state.teamsListSlice.teamsCount)
     const dispatch = useDispatch()
     const navigate = useNavigate()
