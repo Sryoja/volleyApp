@@ -10,6 +10,12 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+.subtitle{
+    text-align: center;
+    margin-top: 20%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 .groupsWrapper{
     display: flex;
     flex-direction: column;

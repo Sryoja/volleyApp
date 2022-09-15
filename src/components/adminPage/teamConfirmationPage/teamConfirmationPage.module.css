@@ -15,3 +15,13 @@
     justify-content: space-between;
     gap: 20px;
 }
+.btnWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.btnRegClosed{
+    background-color: #0c2d3f;
+    color: #544c45;
+}

@@ -1,42 +1,46 @@
 import React from 'react';
-import s from "./Random.module.css"
+import s from "./tossing.module.css"
 import {useSelector} from "react-redux";
 import {OneTeamField} from "../../general/OneTeamField";
-import {makeRandomTeamList} from "./makeRandomTeamsList";
+import {makeRandomTeamList} from "../../../helpers";
 
 
 const TossingPage = () => {
 
-    const teamsList = useSelector(state => state.teamsListSlice.registrationList)
+    const finalList = useSelector(state => state.teamsListSlice.finalList)
+    const isRegistrationOpened = useSelector(state => state.teamsListSlice.isRegistrationOpened)
 
-    const teamsListFiltered = teamsList.filter(team => team.confirmed === true)
-    const res = makeRandomTeamList(teamsListFiltered, 4)
 
 //-----------------------------------------------------------------------------
     return (
         <section className={s.tossSection}>
-            <h2 className={s.title}>Random page</h2>
-            <div className={s.groupsWrapper}>
-                {res.map((team, idx) => {
-                    return <fieldset key={idx} className={s.group}>
-                        <legend>Group {idx + 1}</legend>
-                        <ul className={s.list}>
-                            {team.map((p, idx) => {
-                                return (
-                                    <OneTeamField
-                                        key={p.id}
-                                        number={idx + 1}
-                                        player1={p.player1}
-                                        player2={p.player2}
-                                        confirmed={p.confirmed}
-                                    />
-                                )
-                            })}
-                        </ul>
-                    </fieldset>
-                })}
+            {isRegistrationOpened
+                ?<h2 className={s.title}>Жеребьевка будет доступна после завершения регистрации.</h2>
+                :<h2 className={s.title}>Результат жеребьевки:</h2>
+            }
+            {!isRegistrationOpened && <div className={s.groupsWrapper}>
+                    {finalList.map((team, idx) => {
+                        return <fieldset key={idx} className={s.group}>
+                            <legend>Group {idx + 1}</legend>
+                            <ul className={s.list}>
+                                {team.map((p, idx) => {
+                                    return (
+                                        <OneTeamField
+                                            key={p.id}
+                                            number={idx + 1}
+                                            player1={p.player1}
+                                            player2={p.player2}
+                                            confirmed={p.confirmed}
+                                        />
+                                    )
+                                })}
+                            </ul>
+                        </fieldset>
+                    })
+                    }
 
-            </div>
+                </div>
+            }
         </section>
     );
 };

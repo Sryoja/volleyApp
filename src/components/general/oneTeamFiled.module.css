@@ -36,18 +36,6 @@
     text-align: center;
 }
 .itemBtn{
-    border: none;
-    background-color: #0d3c48;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
     flex-basis: 50%;
 }
-.itemBtn:hover,
-.itemBtn:focus {
-    outline: none;
-    background-color: #0c2d3f;
-    color: #00c4ff;
-}
-.itemBtn:active{
-    transform: scale(0.9);
-}
+

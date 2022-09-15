@@ -11,7 +11,7 @@ export const getTeamsListAndSetToStore = createAsyncThunk(
             if(!teamsList){
                 throw new Error("данные с сервера не получены")
             }
-            dispatch(setTeamsList(teamsList))
+            dispatch(setRegistrationList(teamsList))
             dispatch(teamsCountIncrement(teamsList.length))
         } catch (error){
             return rejectWithValue(error.message)
@@ -35,15 +35,20 @@ export const updateTeamConfirm = createAsyncThunk(
 
 const initialState = {
     registrationList: [],
-    teamsCount: 0
+    finalList: [],
+    teamsCount: 0,
+    isRegistrationOpened: true
 }
 
 const teamsListSlice = createSlice({
     name: "registrationList",
     initialState,
     reducers: {
-        setTeamsList: (state, action) => {
+        setRegistrationList: (state, action) => {
             state.registrationList = action.payload
+        },
+        setFinalList: (state, action) => {
+            state.finalList = action.payload
         },
         addTeam: (state, action) => {
             let pl = action.payload
@@ -63,6 +68,9 @@ const teamsListSlice = createSlice({
         setConfirmed: (state, action) => {
             const {id, confirmed} = action.payload
             state.registrationList[id].confirmed = confirmed
+        },
+        setIsRegistrationOpened: (state, action) => {
+            state.isRegistrationOpened = action.payload
         }
     },
     extraReducers: {
@@ -72,5 +80,10 @@ const teamsListSlice = createSlice({
     }
 })
 
-export const {addTeam, setTeamsList, teamsCountIncrement, setConfirmed} = teamsListSlice.actions
+export const {addTeam,
+    setRegistrationList,
+    setFinalList,
+    teamsCountIncrement,
+    setConfirmed,
+    setIsRegistrationOpened} = teamsListSlice.actions
 export default teamsListSlice.reducer

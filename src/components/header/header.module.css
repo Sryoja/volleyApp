@@ -16,7 +16,6 @@
     left: 1rem;
 }
 .menuList {
-    /*border: 1px solid aqua;*/
     padding: 0;
     margin: 0;
     display: flex;
@@ -28,7 +27,7 @@
 }
 .menuLink {
     font-size: 0.9rem;
-    border: 1px solid #021013;
+    border: 1px solid transparent;
     display: inline-block;
     padding: 1rem 2rem;
     cursor: pointer;

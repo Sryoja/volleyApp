@@ -1,0 +1,21 @@
+.btn{
+    border: 1px solid transparent;
+    background-color: #0d3c48;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+.btn[disabled]{
+    background-color: #0c2d3f;
+    color: #544c45;
+    pointer-events: none;
+}
+.btn:hover {
+    background-color: #0c2d3f;
+}
+.btn:focus {
+    outline: none;
+    border: 1px solid #103b54;
+}
+.btn:active{
+    transform: scale(0.9);
+}

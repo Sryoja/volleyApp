@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./adminPage.module.css"
 import {Link, Outlet} from "react-router-dom";
-import {updateTeamOnFirebase} from "../../api/firebase";
 
 export const AdminPage = () => {
 

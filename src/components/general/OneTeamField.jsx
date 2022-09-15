@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import s from "./oneTeamFiled.module.css"
+import {PrimaryButton} from "./button/PrimaryButton";
 
 export const OneTeamField = ({player1, player2, number, phone, confirmed, id, setConfirmedToStore}) => {
 
@@ -17,14 +18,14 @@ export const OneTeamField = ({player1, player2, number, phone, confirmed, id, se
         {phone && <div className={s.itemExtra}>
             <span>{phone}</span>
                 {confirmed
-                    ? <button
-                        className={s.itemBtn}
+                    ? <PrimaryButton
+                        addClassName={s.itemBtn}
                         onClick={toggleConfirm}
-                    >Отклонить</button>
-                    : <button
-                        className={s.itemBtn}
+                    >Отклонить</PrimaryButton>
+                    : <PrimaryButton
+                        addClassName={s.itemBtn}
                         onClick={toggleConfirm}
-                    >Подтвердить</button>
+                    >Подтвердить</PrimaryButton>
                 }
         </div>}
     </li>)

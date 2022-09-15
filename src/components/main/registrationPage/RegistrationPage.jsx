@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 const RegistrationPage = () => {
 
     const teamsCount = useSelector(state => state.teamsListSlice.teamsCount)
+    const isRegistrationOpened = useSelector(state => state.teamsListSlice.isRegistrationOpened)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -30,7 +31,10 @@ const RegistrationPage = () => {
 
     return (
         <section className={s.regSection}>
-                <MyFormWithFormik getNewTeam={getNewTeam}/>
+            {isRegistrationOpened
+                ?<MyFormWithFormik getNewTeam={getNewTeam}/>
+                :<h2>Регистрация закрыта.</h2>
+            }
         </section>
     );
 };
