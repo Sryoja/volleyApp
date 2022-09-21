@@ -7,18 +7,12 @@ import {OneTeamField} from "../../general/OneTeamField";
 
 const StartPage = () => {
 
-    // const dispatch = useDispatch()
     const teamsList = useSelector(state => state.teamsListSlice.registrationList)
-
-    // useEffect(() => {
-    //     dispatch(getTeamsListAndSetToStore())
-    // }, [])
-
     const teamsListFiltered = teamsList.filter(team => team.confirmed === true)
 
     return (
         <section className={s.startSection}>
-            {!teamsList.length
+            {!teamsListFiltered.length
                 ? <h2 className={s.startTitle}>Нет зарегистрированных команд.</h2>
                 : <h2 className={s.startTitle}>Список зарегистрированных команд.</h2>
             }

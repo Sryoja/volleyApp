@@ -2,9 +2,13 @@
     grid-column: 2;
     padding: 20px;
 }
-.title {
-    text-align: center;
-    margin: 2rem 0;
-    font-size: 1.5rem;
-    font-weight: bold;
+.nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #08405b;
+}
+.link{
+
 }

@@ -10,7 +10,8 @@
 .listItem.confirmed .itemSpan {
     color: #32a4c5;
 }
-.listItem.denied .itemSpan {
+.listItem.denied .itemSpan,
+.listItem.denied .phone {
     color: dimgrey;
     text-decoration: line-through;
 }

@@ -3,12 +3,14 @@ import s from "./adminPage.module.css"
 import {Link, Outlet} from "react-router-dom";
 
 export const AdminPage = () => {
-
-
     return (
         <div className={s.adminSection}>
-            <h2 className={s.title}>Admin Page</h2>
-            <Link to="teams">teams</Link>
+            <nav className={s.nav}>
+                <Link
+                    to="teams"
+                    className={s.link}
+                >страница подтверждения команд</Link>
+            </nav>
             <div>
                 <Outlet/>
             </div>

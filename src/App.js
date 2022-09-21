@@ -29,7 +29,6 @@ function App() {
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="registration" element={<RegistrationPage/>}/>
                 <Route path="tossing" element={<TossingPage/>}/>
-                <Route path="random" element={<TossingPage_old/>}/>
                 <Route path="confirm" element={<ConfirmPage/>}/>
                 <Route path="admin" element={<AdminPage/>}>
                     <Route path="teams" element={<TeamConfirmationPage/>}/>

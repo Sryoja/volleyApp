@@ -10,11 +10,10 @@ const TossingPage = () => {
     const finalList = useSelector(state => state.teamsListSlice.finalList)
     const isRegistrationOpened = useSelector(state => state.teamsListSlice.isRegistrationOpened)
 
-
 //-----------------------------------------------------------------------------
     return (
         <section className={s.tossSection}>
-            {isRegistrationOpened
+            {isRegistrationOpened || !finalList.length
                 ?<h2 className={s.title}>Жеребьевка будет доступна после завершения регистрации.</h2>
                 :<h2 className={s.title}>Результат жеребьевки:</h2>
             }
