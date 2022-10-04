@@ -1,0 +1,19 @@
+.tournamentInput {
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: #063042;
+    color: inherit;
+    width: 100%;
+}
+
+.myFormikButton {
+    align-self: flex-start;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #063042;
+    color: antiquewhite;
+    border-radius: 5px;
+    border: 1px solid #08405b;;
+}
