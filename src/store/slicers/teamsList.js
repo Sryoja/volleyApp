@@ -1,30 +1,72 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {getTeamsListFromFirebase, updateTeamOnFirebase} from "../../api/firebase";
+import {getDataAPI, registrationAPI} from "../../api/firebaseAPI";
 
 //---------- AsyncThunks -------------------
 
-export const getTeamsListAndSetToStore = createAsyncThunk(
-   "registrationList/getTeamsListAndSetToStore",
-    async function(_, {rejectWithValue, dispatch}){
-        try{
-            const teamsList = await getTeamsListFromFirebase()
-            if(!teamsList){
+
+export const initializeApp = createAsyncThunk(
+    "registrationList/getTeamsListAndSetToStore",
+    async function (_, {rejectWithValue, dispatch}) {
+        try {
+            const data = await getDataAPI.getAllData()
+            if (!data) {
                 throw new Error("данные с сервера не получены")
             }
-            dispatch(setRegistrationList(teamsList))
-            dispatch(teamsCountIncrement(teamsList.length))
-        } catch (error){
+            dispatch(setRegistrationList(data.regList))
+            dispatch(setCurrentTournamentName(data.tournamentName))
+            dispatch(teamsCountIncrement(data.regList.length))
+            dispatch(setIsRegistrationOpened(data.regIsOpened))
+            if(data.finalList){
+                dispatch(setFinalListToStore(data.finalList))
+            }
+        } catch (error) {
             return rejectWithValue(error.message)
         }
     }
 )
 export const updateTeamConfirm = createAsyncThunk(
     "registrationList/updateTeamConfirm",
-    async function({teamNumber, confirmed}, {rejectWithValue, dispatch}){
-        try{
-            await updateTeamOnFirebase(teamNumber, confirmed)
-            dispatch(setConfirmed({id:teamNumber, confirmed}))
-        } catch (error){
+    async function ({teamNumber, confirmed}, {rejectWithValue, dispatch}) {
+        try {
+            await registrationAPI.updateTeamConfirmation(teamNumber, confirmed)
+            dispatch(setConfirmed({id: teamNumber, confirmed}))
+        } catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+export const setFinalList = createAsyncThunk(
+    "registrationList/setFinalList",
+    async function ({finalList}, {rejectWithValue, dispatch}) {
+        console.log(finalList)
+        try {
+            await registrationAPI.setFinalTeamsList(finalList)
+            dispatch(setFinalListToStore(finalList))
+        } catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+export const setTournamentName = createAsyncThunk(
+    "registrationList/setTournamentName",
+    async function (name, {rejectWithValue, dispatch}) {
+        try {
+            await registrationAPI.setTournamentName(name)
+            dispatch(setCurrentTournamentName(name))
+            await registrationAPI.setRegIsOpened(true)
+            dispatch(setIsRegistrationOpened(true))
+        } catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+export const setRegistration = createAsyncThunk(
+    "registrationList/setRegistration",
+    async function ({isOpened}, {rejectWithValue, dispatch}) {
+        try {
+            await registrationAPI.setRegIsOpened(isOpened)
+            dispatch(setIsRegistrationOpened(isOpened))
+        } catch (error) {
             return rejectWithValue(error.message)
         }
     }
@@ -34,6 +76,7 @@ export const updateTeamConfirm = createAsyncThunk(
 //---------- Slicers -----------------------
 
 const initialState = {
+    currentTournamentName: "",
     registrationList: [],
     finalList: [],
     teamsCount: 0,
@@ -44,10 +87,13 @@ const teamsListSlice = createSlice({
     name: "registrationList",
     initialState,
     reducers: {
+        setCurrentTournamentName: (state, action) => {
+            state.currentTournamentName = action.payload
+        },
         setRegistrationList: (state, action) => {
             state.registrationList = action.payload
         },
-        setFinalList: (state, action) => {
+        setFinalListToStore: (state, action) => {
             state.finalList = action.payload
         },
         addTeam: (state, action) => {
@@ -62,7 +108,7 @@ const teamsListSlice = createSlice({
             state.registrationList.push(newTeam)
             state.teamsCount += 1
         },
-        teamsCountIncrement: (state,action) => {
+        teamsCountIncrement: (state, action) => {
             state.teamsCount = action.payload
         },
         setConfirmed: (state, action) => {
@@ -80,10 +126,13 @@ const teamsListSlice = createSlice({
     }
 })
 
-export const {addTeam,
+export const {
+    addTeam,
+    setCurrentTournamentName,
     setRegistrationList,
-    setFinalList,
+    setFinalListToStore,
     teamsCountIncrement,
     setConfirmed,
-    setIsRegistrationOpened} = teamsListSlice.actions
+    setIsRegistrationOpened
+} = teamsListSlice.actions
 export default teamsListSlice.reducer

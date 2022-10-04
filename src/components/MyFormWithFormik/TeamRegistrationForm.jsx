@@ -6,7 +6,7 @@ import FormikField from "./FormikField";
 import {useSelector} from "react-redux";
 
 
-const MyFormWithFormik = ({getNewTeam}) => {
+const TeamRegistrationForm = ({getNewTeam}) => {
 
     const teamsCount = useSelector(state => state.teamsListSlice.teamsCount)
 
@@ -78,4 +78,4 @@ const MyFormWithFormik = ({getNewTeam}) => {
     );
 };
 
-export default MyFormWithFormik;
+export default TeamRegistrationForm;

@@ -9,9 +9,8 @@ import {NotFoundPage} from "./components/general/NotFoundPage/NotFoundPage";
 import {ConfirmPage} from "./components/general/ConfirmPage/ConfirmPage";
 import {AdminPage} from "./components/adminPage/AdminPage";
 import {TeamConfirmationPage} from "./components/adminPage/teamConfirmationPage/TeamConfirmationPage";
-import TossingPage_old from "./components/main/tossingPage_old/TossingPage_old";
 import {useEffect} from "react";
-import {getTeamsListAndSetToStore} from "./store/slicers/teamsList";
+import {initializeApp} from "./store/slicers/teamsList";
 import {useDispatch} from "react-redux";
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getTeamsListAndSetToStore())
+        dispatch(initializeApp())
     }, [])
 
     return (

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from "./oneTeamFiled.module.css"
 import {PrimaryButton} from "./button/PrimaryButton";
 
-export const OneTeamField = ({player1, player2, number, phone, confirmed, id, setConfirmedToStore}) => {
+export const OneTeamField = ({player1, player2, number, phone, confirmed, id, setConfirmedToStore, isRegistrationOpened}) => {
 
     const toggleConfirm = () => {
         setConfirmedToStore(id, !confirmed)
@@ -19,10 +19,12 @@ export const OneTeamField = ({player1, player2, number, phone, confirmed, id, se
             <span className={s.phone}>{phone}</span>
                 {confirmed
                     ? <PrimaryButton
+                        disabled={!isRegistrationOpened}
                         addClassName={s.itemBtn}
                         onClick={toggleConfirm}
                     >Отклонить</PrimaryButton>
                     : <PrimaryButton
+                        disabled={!isRegistrationOpened}
                         addClassName={s.itemBtn}
                         onClick={toggleConfirm}
                     >Подтвердить</PrimaryButton>
